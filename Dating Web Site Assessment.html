@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task</title>
+    <style type="text/css">
+        form {
+            width: 750px;
+        }
+        fieldset {
+            border: 10px solid yellow;
+            background: #feffe5;
+        }
+        label:hover {
+            font-size: 26px;
+        }
+        input:hover,
+        select:hover,
+        textarea:hover,
+        span:hover {
+            font-size: 18px;
+        }
+        img {
+            width: 150px;
+        }
+        label {
+            width: 180px;
+            display: inline-block;
+            text-align: right;
+        }
+        span {
+            width: 35px;
+            display: inline-block;
+            text-align: center;
+            padding: 0 15px;
+            color: white;
+        }
+        #Address {
+            vertical-align: top;
+        }
+        .red {
+            background: #bc1d2e;
+        }
+        .purple {
+            background: #920092;
+        }
+    </style>
+
+    <script type="text/javascript">
+        window.onload = function() {
+            var files = document.querySelectorAll("input[type=file]");
+            files[0].addEventListener("change", function(e) {
+                if(this.files && this.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) { document.getElementById("preview").setAttribute("src", e.target.result); }
+                    reader.readAsDataURL(this.files[0]);
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>Please Enter Your Details For Our Dating Website!</h1>
+        <form method="post" enctype="multipart/form-data" action="http://ihome.ust.hk/~rossiter/cgi-bin/show_everything.php">
+            <fieldset>
+                <legend>Your Face</legend>
+                    <label for="fileToUpload">Your image:</label>
+                        <input type="file" id="fileToUpload" name="fileToUpload" class="image"> <br>
+                    <label>Image preview:</label>
+                        <img id="preview" src=""/>
+            </fieldset>
+
+            <fieldset>
+                <legend>Your General Details</legend>
+                    <label for="Name">Name:</label>
+                        <input type="text" id="Name" name="Name" placeholder="Your full name"/> <br>
+
+                    <label for="Gender">Gender:</label>
+                        <input type="radio" id="Gender" name="Gender" value="Male" required/>Male
+                        <input type="radio" id="Gender" name="Gender" value="Female"/>Female <br>
+
+                    <label for="Age">Age:</label>
+                        <input type="number" min="18" max="100" id="Age" name="Age"/> <br>
+
+                    <label for="DateOfBirth">Date of birth:</label>
+                        <input type="date" id="DateOfBirth" name="DateOfBirth"/> <br>
+
+                    <label for="Color">Favorite color:</label>
+                        <input type="color" id="Color" name="Color"/> <br>
+
+                    <label for="Country">Which country:</label>
+                        <select id="Country" name="Country">
+                            <option value="Msc">Moscow</option>
+                            <option value="St">Saint Petersburg</option>
+                            <option value="Br">Bryansk</option>
+                            <option value="Kd">Krasnodar</option>
+                            <option value="Kl">Kaluga</option>
+                            <option value="Kz">Kazan</option>
+                            <option value="Ob">Orenburg</option>
+                            <option value="Sm">Smolensk</option>
+                            <option value="Tg">Taganrog</option>
+                            <option value="Vg">Volgograd</option>
+                        </select> <br>
+            </fieldset>
+
+            <fieldset>
+                <legend>Your Indicators</legend>
+                    <label for="Height">Height:</label>
+                <span class="red">Short</span> <input type="range" id="Height" name="Height"/> <span class="purple">Tall</span> <br>
+
+                    <label for="Salary">Salary:</label>
+                        <span class="red">Poor</span> <input type="range" id="Salary" name="Salary"/> <span class="purple">Rich</span> <br>
+            </fieldset>
+
+            <fieldset>
+                <legend>Your Contact Information</legend>
+                    <label for="Email">Email:</label>
+                        <input type="email" id="Email" name="Email"/> <br>
+
+                    <label for="Mobile">Mobile:</label>
+                        <input type="tel" id="Mobile" name="Mobile"/> <br>
+
+                    <label for="Address">Address:</label>
+                         <textarea name="Address" id="Address" cols="50" rows="4"></textarea> <br>
+
+                    <label>Methods to contact you:</label>
+                        <input type="checkbox" name="Contact" value="email"/> Email
+                        <input type="checkbox" name="Contact" value="wsu"/> Whatsapp
+                        <input type="checkbox" name="Contact" value="chat"/> In-app chat
+            </fieldset> <br>
+            <input type="submit" value="Submit!"/>
+        </form>
+</body>
+</html>
