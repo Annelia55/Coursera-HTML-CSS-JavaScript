@@ -4,5 +4,6 @@ Done asessment tasks of <a href="https://www.coursera.org/learn/html-css-javascr
 1 week - Dating Web Site
 <br>
 ![Picture](Dating-Web-Site.png)
-
-
+<br><br>
+2 week - Guessing Color Game
+![Picture](Guessing-Color-Game.jpg)

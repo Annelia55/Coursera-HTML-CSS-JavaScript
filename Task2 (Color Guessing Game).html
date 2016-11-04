@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Color Guessing Game</title>
+</head>
+<body onload="do_game()" id="body">
+    <script type="text/javascript">
+        var colors = ["aqua", "black", "blue", "cream", "fuchsia", "gray", "green", "olive", "orange", "pink", "purple", "red", "silver", "white", "yellow"];
+        var guess_index = Math.floor(Math.random() * (colors.length));
+        var guess_input;
+        var gueses = 0;
+        var finished = false;
+
+        function do_game() {
+            while (!finished) {
+                guess_input = prompt("I'm thinking of one of these colors:" + "\n\n"
+                        + "aqua, black, blue, cream, fuchsia, gray, green, olive, orange, pink, purple, red, silver, white, yellow"
+                        + "\n\n" + "What color am I thinking of?");
+                gueses += 1;
+                finished = check_guess();
+            }
+            function check_guess() {
+                var guess_color_index = colors.indexOf(guess_input);
+
+                if (guess_color_index == -1) {
+                    alert("Sorry, I don't recognize your color" + "\n\n" + "Please try again");
+                    return false;
+                }
+
+                if (guess_input < colors[guess_index]) {
+                    alert("Sorry, your guess is not correct!" + "\n\n"
+                            + "Hint: your color is alphabetically lower than mine" + "\n\n"
+                            + "Please try again");
+                    return false;
+                }
+                if (guess_input > colors[guess_index]) {
+                    alert("Sorry, your guess is not correct!" + "\n\n"
+                            + "Hint: your color is alphabetically higher than mine" + "\n\n"
+                            + "Please try again");
+                    return false;
+                }
+                if (guess_input == colors[guess_index]) {
+                    document.getElementById('body').style.backgroundColor = colors[guess_index];
+                    alert("Congratulations! You have guessed the color." + "\n\nIt took you " + gueses + " guesses to finish the game!"
+                    + "\n\nYou can see the color in the background.");
+                    return true;
+                }
+
+            }
+        }
+        alert(guess_index);
+    </script>
+</body>
+</html>
+
